@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from "react";
 import "./styles/style.scss";
 import Overlay from "./components/side-components/overlay";
@@ -5,13 +7,16 @@ import Music from "./components/music/music";
 import songs from "./songs.utlil";
 import SongsList from "./components/songs-list/SongsList";
 import Sidebar from "./components/side-bar/SideBar";
+import TrendingSlider from "./components/trending-slider/TrendingSlider";
 
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
   }
 });
+
 class App extends React.Component {
   state = { songs, currentSongIndex: 0, isSideBarShown: false };
+
   togglePlay = (audioRef) => {
     const songs = this.state.songs;
     if (songs[this.state.currentSongIndex].isPlaying) {
@@ -38,11 +43,12 @@ class App extends React.Component {
 
     this.setState({ songs });
   };
+
   skipForward = () => {
     try {
       const numberOfSongs = this.state.songs.length;
       let currentSongIndex = this.state.currentSongIndex + 1;
-      if (currentSongIndex == numberOfSongs) {
+      if (currentSongIndex === numberOfSongs) {
         currentSongIndex = 0;
       }
       const songs = this.state.songs;
@@ -55,11 +61,12 @@ class App extends React.Component {
       }, 300);
     }
   };
+
   skipBackward = () => {
     try {
       const numberOfSongs = this.state.songs.length;
       let currentSongIndex = this.state.currentSongIndex - 1;
-      if (currentSongIndex == -1) {
+      if (currentSongIndex === -1) {
         currentSongIndex = numberOfSongs - 1;
       }
       const songs = this.state.songs;
@@ -74,6 +81,7 @@ class App extends React.Component {
       }, 300);
     }
   };
+
   onClickCard = (song) => {
     try {
       let songs = this.state.songs;
@@ -87,9 +95,11 @@ class App extends React.Component {
       }, 200);
     }
   };
+
   toggleSideBar = () => {
     this.setState({ isSideBarShown: !this.state.isSideBarShown });
   };
+
   render() {
     return (
       <div className="App">
@@ -103,6 +113,7 @@ class App extends React.Component {
             this.setState({ isSideBarShown: false });
           }}
         />
+        <TrendingSlider songs={this.state.songs} />
         <SongsList
           songs={this.state.songs}
           displayedSong={this.state.songs[this.state.currentSongIndex].name}
@@ -114,7 +125,6 @@ class App extends React.Component {
             this.setState({ isSideBarShown: false });
           }}
         />
-        {/* overlay */}
         <Overlay
           color={this.state.songs[this.state.currentSongIndex].color}
           bg={this.state.songs[this.state.currentSongIndex].image}

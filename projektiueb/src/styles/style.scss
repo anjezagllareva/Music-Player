@@ -19,6 +19,7 @@ $text-secondary: rgb(147, 147, 147);
 }
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
+  overflow: hidden; // Prevent scrolling
 }
 html {
   font-size: 62.5%;
