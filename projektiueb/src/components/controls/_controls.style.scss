@@ -2,7 +2,7 @@
   position: fixed;
   left: 220px;
   bottom: 8px;
-  right:0;
+  right: 0;
   width: 50%;
   background-color: rgba($main, 0.5);
   box-shadow: $shadow;
@@ -25,11 +25,11 @@
     padding: 5px;
   }
   .controls {
-    // width: 80%;
     display: flex;
     padding: 0 2rem;
     align-items: center;
     padding-bottom: 0.5rem;
+
     .basic-controllers {
       width: 60%;
       display: flex;
@@ -43,11 +43,18 @@
         margin-left: 1rem;
       }
     }
+
+    // Adjusted font-size for FontAwesome icons
+    .fas,
+    .far,
+    .fal,
+    .fab {
+      font-size: 1.5em; /* Adjust the value to make the icons bigger or smaller */
+    }
   }
 }
 
 .audio-range {
-  // width: 30% !important;
   padding-bottom: 0.5rem;
 }
 

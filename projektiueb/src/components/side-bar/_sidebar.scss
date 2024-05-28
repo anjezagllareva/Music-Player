@@ -31,9 +31,9 @@
   }
 }
 .liked-songs .liked-song {
-  padding: 2rem 3rem;
+  padding: 2rem;
   cursor: pointer;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(1px); /* Adjusted blur radius */
   transition: background-color 0.1s ease-in-out;
 }
 .liked-songs .liked-song:hover {

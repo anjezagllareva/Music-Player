@@ -1,9 +1,14 @@
 .control-icon {
-  padding: 1.6rem;
+  padding: 1.2rem; /* Adjusted padding for centering */
   background-color: rgba(0, 0, 0, 0.326);
   border-radius: 50%;
   transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
   cursor: pointer;
+  font-size: 1.7rem; /* Increased font size to make icons bigger */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adjusted box shadow */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
 }
 .control-icon:hover {
   background-color: rgba(52, 52, 52, 0.326);
