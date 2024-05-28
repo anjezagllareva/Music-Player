@@ -4,6 +4,7 @@ import Overlay from "./components/side-components/overlay";
 import Music from "./components/music/music";
 import songs from "./songs.utlil";
 import SongsList from "./components/songs-list/SongsList";
+import Sidebar from "./components/side-bar/SideBar";
 
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
