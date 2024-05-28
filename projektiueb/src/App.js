@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/style.scss";
+import Overlay from "./components/side-components/overlay";
+import Music from "./components/music/music";
 import songs from "./songs.utlil";
 import SongsList from "./components/songs-list/SongsList";
 
