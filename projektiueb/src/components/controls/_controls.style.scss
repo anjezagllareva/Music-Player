@@ -1,8 +1,8 @@
 .footer {
   position: fixed;
-  left: 280px;
-  bottom: 50px;
-  right: 0;
+  left: 220px;
+  bottom: 8px;
+  right:0;
   width: 50%;
   background-color: rgba($main, 0.5);
   box-shadow: $shadow;
@@ -10,6 +10,9 @@
   transition: transform 0.3s ease-in-out;
   z-index: 99;
   backdrop-filter: blur(10px);
+  padding-top: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
 
   .time {
     display: grid;
@@ -28,7 +31,7 @@
     align-items: center;
     padding-bottom: 0.5rem;
     .basic-controllers {
-      width: 70%;
+      width: 60%;
       display: flex;
       justify-content: space-evenly;
     }
