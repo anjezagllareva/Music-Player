@@ -8,6 +8,7 @@ import songs from "./songs.utlil";
 import SongsList from "./components/songs-list/SongsList";
 import Sidebar from "./components/side-bar/SideBar";
 import TrendingSlider from "./components/trending-slider/TrendingSlider";
+import Preloader from "./components/preloader/Preloader";
 
 document.addEventListener("keyup", (event) => {
   if (event.code === "Space") {
@@ -15,7 +16,14 @@ document.addEventListener("keyup", (event) => {
 });
 
 class App extends React.Component {
-  state = { songs, currentSongIndex: 0, isSideBarShown: false };
+  state = { songs, currentSongIndex: 0, isSideBarShown: false ,  isLoading: true };
+
+  componentDidMount() {
+    // Simulate a loading process (e.g., fetching data, initializing player)
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 3000); // Adjust the timeout as necessary
+  }
 
   togglePlay = (audioRef) => {
     const songs = this.state.songs;
@@ -101,6 +109,9 @@ class App extends React.Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <Preloader />; // Render the preloader while loading
+    }
     return (
       <div className="App">
         <Music
