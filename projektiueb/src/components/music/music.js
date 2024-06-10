@@ -144,22 +144,17 @@ class Music extends React.Component {
 								style={{ borderRadius: '50%' }}
 							/>
 							<Text
-								text={song.name}
-								x={
-									xCenter -
-									this.getTextWidth(song.name, "30px Arial") / 2
-								}
-								y={380}
-								style={{ fontSize: 30, fill: "white" }}
+   						 	    text={song.name}
+   						  	    x={xCenter - this.getTextWidth(song.name, "30px Arial") / 2}
+   						 	    y={380}
+  						        style={{ fontSize: 30, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
 							/>
+
 							<Text
-								text={song.artist}
-								x={
-									xCenter -
-									this.getTextWidth(song.artist, "22px Arial") / 2
-								}
-								y={430}
-								style={{ fontSize: 22, fill: "white" }}
+  						        text={song.artist}
+  						        x={xCenter - this.getTextWidth(song.artist, "22px Arial") / 2}
+   						        y={430}
+   						        style={{ fontSize: 22, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
 							/>
 						</Container>
 					</Stage>
