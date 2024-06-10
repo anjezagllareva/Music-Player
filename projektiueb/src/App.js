@@ -1,6 +1,7 @@
 // src/App.js
 
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import "./styles/style.scss";
 import Overlay from "./components/side-components/overlay";
 import Music from "./components/music/music";
@@ -9,14 +10,10 @@ import SongsList from "./components/songs-list/SongsList";
 import Sidebar from "./components/side-bar/SideBar";
 import TrendingSlider from "./components/trending-slider/TrendingSlider";
 import Preloader from "./components/preloader/Preloader";
-
-document.addEventListener("keyup", (event) => {
-  if (event.code === "Space") {
-  }
-});
+import VideoPage from "./components/video-page/VideoPage";
 
 class App extends React.Component {
-  state = { songs, currentSongIndex: 0, isSideBarShown: false ,  isLoading: true };
+  state = { songs, currentSongIndex: 0, isSideBarShown: false, isLoading: true };
 
   componentDidMount() {
     // Simulate a loading process (e.g., fetching data, initializing player)
@@ -113,36 +110,61 @@ class App extends React.Component {
       return <Preloader />; // Render the preloader while loading
     }
     return (
-      <div className="App">
-        <Music
-          handleSkipForward={this.skipForward}
-          handleSkipBackward={this.skipBackward}
-          handleTooglePlay={this.togglePlay}
-          song={this.state.songs[this.state.currentSongIndex]}
-          stopLoadingHandler={this.stopLoading}
-          hideSidebar={() => {
-            this.setState({ isSideBarShown: false });
-          }}
-        />
-        <TrendingSlider songs={this.state.songs} />
-        <SongsList
-          songs={this.state.songs}
-          displayedSong={this.state.songs[this.state.currentSongIndex].name}
-          handleClickCard={this.onClickCard}
-          Sidebar={Sidebar}
-          toggleSideBar={this.toggleSideBar}
-          isSideBarShown={this.state.isSideBarShown}
-          hideSidebar={() => {
-            this.setState({ isSideBarShown: false });
-          }}
-        />
-        <Overlay
-          color={this.state.songs[this.state.currentSongIndex].color}
-          bg={this.state.songs[this.state.currentSongIndex].image}
-        />
-      </div>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="App">
+                <Music
+                  handleSkipForward={this.skipForward}
+                  handleSkipBackward={this.skipBackward}
+                  handleTooglePlay={this.togglePlay}
+                  song={this.state.songs[this.state.currentSongIndex]}
+                  stopLoadingHandler={this.stopLoading}
+                  hideSidebar={() => {
+                    this.setState({ isSideBarShown: false });
+                  }}
+                />
+                <TrendingSlider songs={this.state.songs} />
+                <SongsList
+                  songs={this.state.songs}
+                  displayedSong={this.state.songs[this.state.currentSongIndex].name}
+                  handleClickCard={this.onClickCard}
+                  Sidebar={Sidebar}
+                  toggleSideBar={this.toggleSideBar}
+                  isSideBarShown={this.state.isSideBarShown}
+                  hideSidebar={() => {
+                    this.setState({ isSideBarShown: false });
+                  }}
+                />
+                <Overlay
+                  color={this.state.songs[this.state.currentSongIndex].color}
+                  bg={this.state.songs[this.state.currentSongIndex].image}
+                />
+                <MusicButton />
+                <audio ref={(ref) => (this.audioRef = ref)} src={this.state.songs[this.state.currentSongIndex].url}></audio>
+              </div>
+            }
+          />
+          <Route path="/video" element={<VideoPage />} />
+        </Routes>
+      </Router>
     );
   }
 }
+
+const MusicButton = () => {
+  const navigate = useNavigate();
+
+  return (
+    <button
+      onClick={() => navigate("/video")}
+      className="music-button"
+    >
+      Play Video
+    </button>
+  );
+};
 
 export default App;

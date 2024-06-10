@@ -210,3 +210,20 @@ how to remove the virtical space around the range input in IE*/
   background: #a1a1a1;
   border-radius: 0px;
 }
+  .music-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;  /* Position on the left side */
+    background-color: #183aaa; /* Customize the color as needed */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .music-button:hover {
+    background-color: #4a4b4e; /* Darken the button on hover */
+  }

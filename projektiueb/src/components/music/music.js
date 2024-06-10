@@ -53,8 +53,10 @@ class Music extends React.Component {
 	updateCurrentTime = () => {
 		try {
 			setTimeout(() => {
-				const currentTime = this.state.audio.current.currentTime;
-				this.setState({ currentTime: currentTime });
+				if (this.state.audio && this.state.audio.current) {
+					const currentTime = this.state.audio.current.currentTime;
+					this.setState({ currentTime: currentTime });
+				}
 			}, 400);
 		} catch (err) {
 			setTimeout(() => {
@@ -67,8 +69,10 @@ class Music extends React.Component {
 		let v = e.target.value;
 		this.setState({ currentTime: v });
 		const audio = this.state.audio;
-		audio.current.currentTime = v;
-		this.setState({ audio });
+		if (audio && audio.current) {
+			audio.current.currentTime = v;
+			this.setState({ audio });
+		}
 	};
 
 	onChangeVolume = (e) => {
