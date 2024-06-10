@@ -10,7 +10,6 @@ const Preloader = () => {
         <div className="note note2">♫</div>
         <div className="note note3">♪</div>
       </div>
-      <p>Loading...</p>
     </div>
   );
 };
