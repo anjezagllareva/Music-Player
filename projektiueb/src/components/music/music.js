@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Controls from "../controls/controls";
 import { Stage, Sprite, Text, Container } from "@pixi/react";
+import { TextMetrics } from "pixi.js";
 
 class Music extends React.Component {
 	state = {
@@ -98,6 +99,14 @@ class Music extends React.Component {
 		this.setState({ audio, volume });
 	};
 
+	getTextWidth = (text, font) => {
+		const canvas = document.createElement("canvas");
+		const context = canvas.getContext("2d");
+		context.font = font;
+		const width = context.measureText(text).width;
+		return width;
+	};
+
 	render() {
 		const {
 			song,
@@ -107,35 +116,48 @@ class Music extends React.Component {
 			hideSidebar,
 		} = this.props;
 
+		const stageWidth = 600;
+		const stageHeight = 500;
+		const xCenter = stageWidth / 2;
+		const yCenter = stageHeight / 2;
+		const imageRadius = 150; // Adjust as needed
+		const imageYPosition = yCenter - 50; 
+
 		return (
 			<div className="song" onClick={hideSidebar}>
 				{!song.image ? (
 					<FontAwesomeIcon icon={faPlay} />
 				) : (
 					<Stage
-						width={600}
-						height={500}
+						width={stageWidth}
+						height={stageHeight}
 						options={{ backgroundAlpha: 0 }}
 					>
 						<Container>
-							<Sprite
+						<Sprite
 								image={song.image}
-								x={300}
-								y={200}
-								width={300}
-								height={300}
+								x={xCenter}
+								y={imageYPosition}
+								width={imageRadius * 2}
+								height={imageRadius * 2}
 								anchor={0.5}
-								borderRadius={150}
+								style={{ borderRadius: '50%' }}
 							/>
 							<Text
 								text={song.name}
-								x={225}
+								x={
+									xCenter -
+									this.getTextWidth(song.name, "30px Arial") / 2
+								}
 								y={380}
 								style={{ fontSize: 30, fill: "white" }}
 							/>
 							<Text
 								text={song.artist}
-								x={200}
+								x={
+									xCenter -
+									this.getTextWidth(song.artist, "22px Arial") / 2
+								}
 								y={430}
 								style={{ fontSize: 22, fill: "white" }}
 							/>
