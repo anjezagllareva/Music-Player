@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Controls from "../controls/controls";
 import { Stage, Sprite, Text, Container } from "@pixi/react";
-import { TextMetrics } from "pixi.js";
 
 class Music extends React.Component {
 	state = {
@@ -119,45 +118,54 @@ class Music extends React.Component {
 		const stageWidth = 600;
 		const stageHeight = 500;
 		const xCenter = stageWidth / 2;
-		const yCenter = stageHeight / 2;
 		const imageRadius = 150; // Adjust as needed
-		const imageYPosition = yCenter - 50; 
 
 		return (
-			<div className="song" onClick={hideSidebar}>
+			<div className="song" onClick={hideSidebar} style={{ padding: '20px', textAlign: 'center', marginTop: '90px' }}>
 				{!song.image ? (
 					<FontAwesomeIcon icon={faPlay} />
 				) : (
-					<Stage
-						width={stageWidth}
-						height={stageHeight}
-						options={{ backgroundAlpha: 0 }}
-					>
-						<Container>
-						<Sprite
-								image={song.image}
-								x={xCenter}
-								y={imageYPosition}
+					<>
+						<div style={{ borderRadius: '50%', overflow: 'hidden', width: imageRadius * 2, height: imageRadius * 2, margin: '40px auto' }}>
+							<Stage
 								width={imageRadius * 2}
 								height={imageRadius * 2}
-								anchor={0.5}
-								style={{ borderRadius: '50%' }}
-							/>
-							<Text
-   						 	    text={song.name}
-   						  	    x={xCenter - this.getTextWidth(song.name, "30px Arial") / 2}
-   						 	    y={380}
-  						        style={{ fontSize: 30, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
-							/>
-
-							<Text
-  						        text={song.artist}
-  						        x={xCenter - this.getTextWidth(song.artist, "22px Arial") / 2}
-   						        y={430}
-   						        style={{ fontSize: 22, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
-							/>
-						</Container>
-					</Stage>
+								options={{ backgroundAlpha: 0 }}
+							>
+								<Container>
+									<Sprite
+										image={song.image}
+										x={imageRadius}
+										y={imageRadius}
+										width={imageRadius * 2}
+										height={imageRadius * 2}
+										anchor={0.5}
+									/>
+								</Container>
+							</Stage>
+						</div>
+						<Stage
+							width={stageWidth}
+							height={200} // Adjust as needed for text height
+							options={{ backgroundAlpha: 0 }}
+							style={{ marginTop: '-40px' }} // Add margin to move text lower
+						>
+							<Container>
+								<Text
+									text={song.name}
+									x={xCenter - this.getTextWidth(song.name, "30px Arial") / 2}
+									y={30} // Adjust Y position as needed
+									style={{ fontSize: 30, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
+								/>
+								<Text
+									text={song.artist}
+									x={xCenter - this.getTextWidth(song.artist, "22px Arial") / 2}
+									y={80} // Adjust Y position as needed
+									style={{ fontSize: 22, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
+								/>
+							</Container>
+						</Stage>
+					</>
 				)}
 				<audio
 					src={song.src}
