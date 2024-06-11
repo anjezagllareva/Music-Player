@@ -10,9 +10,7 @@
   transition: transform 0.3s ease-in-out;
   z-index: 99;
   backdrop-filter: blur(10px);
-  padding-top: 30px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 30px 50px 0;
 
   .time {
     display: grid;
@@ -20,25 +18,28 @@
     color: $text-secondary;
     font-size: 2.3rem;
     text-align: center;
+
+    > span {
+      padding: 5px;
+    }
   }
-  .time > span {
-    padding: 5px;
-  }
+
   .controls {
     display: flex;
-    padding: 0 2rem;
+    padding: 0 2rem 0.5rem;
     align-items: center;
-    padding-bottom: 0.5rem;
 
     .basic-controllers {
       width: 60%;
       display: flex;
       justify-content: space-evenly;
     }
+
     .audio-wrapper {
       display: flex;
       flex: 1;
       justify-content: space-between;
+
       input {
         margin-left: 1rem;
       }
@@ -49,7 +50,7 @@
     .far,
     .fal,
     .fab {
-      font-size: 1.5em; /* Adjust the value to make the icons bigger or smaller */
+      font-size: 1.5em; // Adjust the value to make the icons bigger or smaller
     }
   }
 }
@@ -61,11 +62,13 @@
 @media screen and (max-width: 750px) {
   .controls {
     flex-direction: column;
-  }
-  .basic-controllers {
-    width: 100%;
-  }
-  .audio-wrapper {
-    margin: auto;
+
+    .basic-controllers {
+      width: 100%;
+    }
+
+    .audio-wrapper {
+      margin: auto;
+    }
   }
 }

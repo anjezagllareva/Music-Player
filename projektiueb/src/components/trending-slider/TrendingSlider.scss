@@ -47,6 +47,6 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-160px * 4)); /* Adjusted to accommodate 4 slides */
+        transform: translateX(calc(-160px * 4)); 
     }
 }

@@ -5,24 +5,23 @@
   bottom: -18px;
   align-items: center;
   justify-content: center;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   position: relative;
+
   .song-image {
     border-radius: 50%;
     width: 20vw;
     height: 20vw;
     object-fit: cover;
-    animation-play-state: running;
-    animation-name: spin;
-    animation-duration: 30000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation: spin 30s infinite linear;
   }
+
   .song-name {
     margin-top: 2rem;
     font-size: 2.5rem;
     letter-spacing: 0.5rem;
     color: $text-main;
+
     @if $main == #222222 {
       text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
         0 0 42px rgb(71, 70, 73), 0 0 82px rgb(66, 66, 68),
@@ -35,21 +34,23 @@
     color: $text-secondary;
     font-size: 2.5rem;
   }
+
   svg {
     width: 40%;
   }
-}
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media screen and (max-width: 750px) {
-  .song .song-image {
-    width: 70%;
+
+  @media screen and (max-width: 750px) {
+    .song .song-image {
+      width: 70%;
+    }
   }
 }

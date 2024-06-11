@@ -4,49 +4,53 @@
   left: 2rem;
   cursor: pointer;
   z-index: 101;
-
 }
+
 .like-icon:hover {
   color: white;
 }
+
 .sidebar {
   position: fixed;
   top: 0;
   left: -100%;
   bottom: 0;
   z-index: 100;
-  background: linear-gradient(to right, black, rgba(black, 0.5), transparent);
+  background: linear-gradient(to right, black, rgba(0, 0, 0, 0.5), transparent);
   width: 40vw;
   transition: left 0.3s ease-in-out;
   padding-top: 5rem;
   overflow-y: scroll;
-
-  
-
-  .no-fav {
-    font-size: 2rem;
-    padding: 1rem;
-    color: white;
-    font-family: shadows into light, Arial, Helvetica, sans-serif;
-  }
 }
+
+.no-fav {
+  font-size: 2rem;
+  padding: 1rem;
+  color: white;
+  font-family: 'shadows into light', Arial, Helvetica, sans-serif;
+}
+
 .liked-songs .liked-song {
   padding: 2rem;
   cursor: pointer;
-  backdrop-filter: blur(1px); /* Adjusted blur radius */
+  backdrop-filter: blur(1px);
   transition: background-color 0.1s ease-in-out;
 }
+
 .liked-songs .liked-song:hover {
-  background-color: rgba($secondary, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
+
 .liked-songs .liked-song p:nth-child(1) {
   color: rgb(230, 230, 230);
   font-size: 1.5rem;
 }
+
 .liked-songs .liked-song p:nth-child(2) {
   color: rgb(138, 138, 138);
   font-size: 1rem;
 }
+
 .sidebar::-webkit-scrollbar {
   display: none;
 }

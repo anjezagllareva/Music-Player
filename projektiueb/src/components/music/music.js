@@ -40,8 +40,11 @@ class Music extends React.Component {
 	updateDuration = () => {
 		try {
 			setTimeout(() => {
-				const duration_string = this.state.audio.current.duration;
-				this.setState({ duration: duration_string });
+				const audio = this.state.audio;
+				if (audio && audio.current) {
+					const duration_string = audio.current.duration;
+					this.setState({ duration: duration_string });
+				}
 			}, 400);
 		} catch (err) {
 			setTimeout(() => {
@@ -49,12 +52,13 @@ class Music extends React.Component {
 			}, 200);
 		}
 	};
-
+	
 	updateCurrentTime = () => {
 		try {
 			setTimeout(() => {
-				if (this.state.audio && this.state.audio.current) {
-					const currentTime = this.state.audio.current.currentTime;
+				const audio = this.state.audio;
+				if (audio && audio.current) {
+					const currentTime = audio.current.currentTime;
 					this.setState({ currentTime: currentTime });
 				}
 			}, 400);
@@ -64,7 +68,7 @@ class Music extends React.Component {
 			}, 200);
 		}
 	};
-
+	
 	onChangeSlider = (e) => {
 		let v = e.target.value;
 		this.setState({ currentTime: v });
@@ -118,7 +122,7 @@ class Music extends React.Component {
 		const stageWidth = 600;
 		const stageHeight = 500;
 		const xCenter = stageWidth / 2;
-		const imageRadius = 150; // Adjust as needed
+		const imageRadius = 150; 
 
 		return (
 			<div className="song" onClick={hideSidebar} style={{ padding: '20px', textAlign: 'center', marginTop: '90px' }}>
@@ -146,21 +150,21 @@ class Music extends React.Component {
 						</div>
 						<Stage
 							width={stageWidth}
-							height={200} // Adjust as needed for text height
+							height={200}
 							options={{ backgroundAlpha: 0 }}
-							style={{ marginTop: '-40px' }} // Add margin to move text lower
+							style={{ marginTop: '-40px' }}
 						>
 							<Container>
 								<Text
 									text={song.name}
 									x={xCenter - this.getTextWidth(song.name, "30px Arial") / 2}
-									y={30} // Adjust Y position as needed
+									y={30} 
 									style={{ fontSize: 30, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
 								/>
 								<Text
 									text={song.artist}
 									x={xCenter - this.getTextWidth(song.artist, "22px Arial") / 2}
-									y={80} // Adjust Y position as needed
+									y={80}
 									style={{ fontSize: 22, fill: "white", fontStyle: 'italic', textTransform: 'uppercase' }}
 								/>
 							</Container>

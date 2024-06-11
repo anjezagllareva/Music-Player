@@ -1,6 +1,5 @@
-// src/Preloader.js
 import React from 'react';
-import './Preloader.scss';  // Ensure this CSS file exists
+import './Preloader.scss';  
 
 const Preloader = () => {
   return (

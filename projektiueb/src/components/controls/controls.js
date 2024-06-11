@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import Icon from "../side-components/icon";
 
 const toMMSS = function (d) {
-  var sec_num = parseInt(d, 10); // don't forget the second param
+  var sec_num = parseInt(d, 10); 
   var hours = Math.floor(sec_num / 3600);
   var minutes = Math.floor((sec_num - hours * 3600) / 60);
   var seconds = sec_num - hours * 3600 - minutes * 60;
@@ -56,12 +56,10 @@ const Controls = ({
           onChange={(e) => onChangeSlider(e)}
           step={0.001}
         />
-
         <span className="total-time">
           {toMMSS(duration) == "NaN:NaN" ? "00:00" : toMMSS(duration)}
         </span>
       </div>
-
       <div className="controls">
         <div className="basic-controllers">
           <Icon handleClick={handleSkipBackward} icon={faBackward} />
@@ -71,19 +69,14 @@ const Controls = ({
           />
           <Icon handleClick={handleSkipForward} icon={faForward} />
         </div>
-        {/* audio controller */}
-
         <div className="audio-wrapper">
           <Icon
             icon={vol == 0 ? faVolumeMute : faVolumeUp}
             handleClick={toggleMute}
           />
-
           <input
             type="range"
             className="audio-range"
-            // min="0"
-            // max="100"
             min={0}
             max={100}
             value={vol}
